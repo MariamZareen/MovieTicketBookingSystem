@@ -5,11 +5,12 @@ const bodyParser=require('body-parser')
 const {loginTable,movieTable , theatreTable,bookedData} =require('./mongo')
 
 
-app.use(cors(
-    {origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']}
-))
+// app.use(cors(
+//     {origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type']}
+// ))
+app.use(cors({ origin: 'https://movie-ticket-booking-system-frontend.vercel.app' }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

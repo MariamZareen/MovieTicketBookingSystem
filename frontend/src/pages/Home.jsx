@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function Home() {
   const[movies,setMovies]=useState([])
   useEffect(() => {
-    axios.get('http://localhost:8080/')
+    axios.get('https://demo-omega-ochre.vercel.app/')
       .then((res) => {
         setMovies(res.data);
         console.log(res.data); // Log the received data

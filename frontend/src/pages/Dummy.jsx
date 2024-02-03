@@ -21,7 +21,7 @@ export default function Dummy() {
  const { enqueueSnackbar } = useSnackbar();
   
   useEffect(()=>{
-     axios.get(`http://localhost:8080/dummy/${id}?movieName=${movieName}?date=${date}&day=${day}&theatreName=${theatreName}&theatreLocation=${theatreLocation}&slot=${slot}&noOfSeats=${noOfSeats}&price=${price}`)
+     axios.get(`https://demo-omega-ochre.vercel.app/dummy/${id}?movieName=${movieName}?date=${date}&day=${day}&theatreName=${theatreName}&theatreLocation=${theatreLocation}&slot=${slot}&noOfSeats=${noOfSeats}&price=${price}`)
      .then((res)=>{
         console.log(res);
      })

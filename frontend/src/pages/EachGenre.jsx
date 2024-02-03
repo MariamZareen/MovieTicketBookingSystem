@@ -9,7 +9,7 @@ export default function EachGenre() {
     const[movies,setMovies]=useState([])
     const {genreName}=useParams();
     useEffect(()=>{
-      axios.get(`http://localhost:8080/genre/${genreName}`)
+      axios.get(`https://demo-omega-ochre.vercel.app/genre/${genreName}`)
       .then((res)=>{
         setMovies(res.data)
         console.log(JSON.stringify(movies))

@@ -8,7 +8,7 @@ export default function MyProfile() {
 
   console.log(email)
   useEffect(() => {
-    axios.get(`http://localhost:8080/myprofile/${email}`)
+    axios.get(`https://demo-omega-ochre.vercel.app/myprofile/${email}`)
       .then((res) => {
         setData(res.data);
         console.log(JSON.stringify(data));

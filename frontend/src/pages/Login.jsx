@@ -16,7 +16,7 @@ function Login() {
     const data = { email, password };
 
     axios
-      .post('http://localhost:8080/login', data)
+      .post('https://demo-omega-ochre.vercel.app/login', data)
       .then(() => {
         console.log('Data sent to backend successfully');
         loginHandler(data.email); 

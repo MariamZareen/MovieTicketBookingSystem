@@ -53,7 +53,7 @@ export default function Dummy() {
   const handleSubmit = () => {
     const data = { email,movieName, date, day, slot, theatreName, theatreLocation, selectedSeats, totalCost };
   
-    axios.post('http://localhost:8080/reservationdata', data)
+    axios.post('https://demo-omega-ochre.vercel.app/reservationdata', data)
       .then(() => {
         console.log('Data sent to backend successfully');
          enqueueSnackbar('Tickets Booked Successfully', { variant: 'success' });

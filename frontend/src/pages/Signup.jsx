@@ -15,7 +15,7 @@ function Signup() {
     const data = { email, password };
 
     axios
-      .post('http://localhost:8080/signup', data)
+      .post('https://demo-omega-ochre.vercel.app/signup', data)
       .then(() => {
         console.log('Data sent to backend successfully');
         loginHandler(); // Update login state on successful signup

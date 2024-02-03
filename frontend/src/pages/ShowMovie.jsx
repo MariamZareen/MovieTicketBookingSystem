@@ -33,7 +33,7 @@ export default function ShowMovie() {
 
   useEffect(() => {
     // Fetch data from the first URL
-    axios.get(`http://localhost:8080/details/${id}`)
+    axios.get(`https://demo-omega-ochre.vercel.app/details/${id}`)
       .then((res) => {
         setLink(res.data.link);
         setTitle(res.data.title);
@@ -46,7 +46,7 @@ export default function ShowMovie() {
       });
 
     // Fetch data from the second URL
-    axios.get(`http://localhost:8080/theatres/${Theatreid}?movieName=${movieName}&date=${date}`)
+    axios.get(`https://demo-omega-ochre.vercel.app/theatres/${Theatreid}?movieName=${movieName}&date=${date}`)
       .then((res) => {
         console.log(Theatreid, " ", movieName, " ", date);
         setTheatres(res.data);

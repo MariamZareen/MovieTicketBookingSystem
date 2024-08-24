@@ -13,7 +13,7 @@ function Signup() {
 
   const handleSubmit = () => {
     const data = { email, password };
-
+    const backend="https://demo-omega-ochre.vercel.app"
     axios
       .post('https://demo-omega-ochre.vercel.app/signup', data)
       .then(() => {
@@ -33,9 +33,9 @@ function Signup() {
   };
 
   return (
-    <div className='w-full h-screen bg-slate-900 pt-[2px]'>
-     <center> <div className='text-5xl font-black text-slate-300 mt-10 '>CineMagic</div></center>
-      <div className='w-[450px] h-[550px] bg-slate-300 p-5 mx-auto mt-[5%]'>
+    <div className='w-full h-screen bg-slate-900 pt-[2px] overflow-hidden'>
+     <center> <div className=' matemasie-regular font-bold text-4xl mx-10 my-10 text-white'>CineMagic</div></center>
+      <div className='w-[450px] h-[550px] bg-slate-300 p-5 mx-auto mt-[2%]'>
         <center><h1 className='text-3xl font-bold my-9'>Sign Up</h1></center>
         <form method='POST'>
           <center>
@@ -47,7 +47,7 @@ function Signup() {
               <p className='m-3 text-[20px] '>Password</p>
               <input type='password' onChange={(e) => { setPassword(e.target.value) }} name='password' className='w-[70%] h-9 p-1 rounded p-2' />
             </div>
-            <button type='button' className='m-8 p-3 bg-white rounded-xl w-40 text-[18px] hover:bg-slate-300 hover:shadow-white hover:ring-white hover:ring font-bold' onClick={handleSubmit}>SignUp</button>
+            <button type='button' className='m-8 p-3 bg-[#f09631] text-white rounded-xl w-40 text-[18px] hover:bg-slate-900 hover:shadow-white hover:ring-white hover:ring font-bold' onClick={handleSubmit}>SignUp</button>
             <div className='bg-white text-center w-[80%] h-10 mt-6 flex justify-center items-center'>
               <Link to={'/login'} className='font-semibold'>Already have an account? Log In</Link>
             </div>

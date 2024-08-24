@@ -5,28 +5,34 @@ import { useAuth } from '../AuthContext';
 export default function Navbar() {
   const { login,email, logoutHandler } = useAuth();
 
-  return (
-    <div>
-      <nav className='flex justify-between items-center m-0 p-8 bg-slate-900 text-slate-200 w-full h-[100px] sticky top-0 border-b border-slate-800'>
-        <div className='text-3xl font-black'>CineMagic</div>
-        <div className='flex justify-around items-center'>
-          <Link to={'/'} className='text-[20px] p-2 m-5 font-semibold hover:font-bold'>Home</Link>
-          <div className='text-[20px] p-2 m-5 font-semibold hover:font-bold invisible'>Contact</div>
-          {login ? (
-            <Link to={`/myprofile/${email}`}>
-              <div className='text-[20px] p-3 m-5 font-semibold hover:font-bold bg-slate-200 text-slate-900 rounded-xl'>
-                My Profile
-              </div>
-            </Link>
-          ) : (
-            <Link to='/login'>
-              <div className='text-[20px] p-3 m-5 font-semibold hover:font-bold bg-slate-200 text-slate-900 rounded-xl'>
-                LogIn
-              </div>
-            </Link>
-          )}
-        </div>
-      </nav>
+
+  return(
+    <div class="leftsidebox basis-1/5 bg-[#100f2b] h-[100%] w-[100%] text-white ">
+    <h1 class=" matemasie-regular font-bold text-4xl mx-10 my-10">CineMagic</h1>
+    <div class="fullgenrebox mt-[70px] ">
+        <Link to={`/genre/${'action'}`} class="genrebox flex justify-center items-center border-slate-300 border-y-1 mx-auto w-[100%] text-lg relative">
+            <div class="p-6 hover:font-bold">Action</div>
+        </Link>
+
+        <Link to={`/genre/${'comedy'}`} class="genrebox flex justify-center items-center border-slate-300 border-y-1 mx-auto w-[100%] text-lg relative">
+            <div class="p-6 hover:font-bold">Comedy</div>
+        </Link>
+
+        <Link to={`/genre/${'romance'}`} class="genrebox flex justify-center items-center border-slate-300 border-y-1 mx-auto w-[100%] text-lg relative">
+            <div class="p-6 hover:font-bold">Romance</div>
+        </Link>
+
+        <Link to={`/genre/${'horror'}`} class="genrebox flex justify-center items-center border-slate-300 border-y-1 mx-auto w-[100%] text-lg relative">
+            <div class="p-6 hover:font-bold">Horror</div>
+        </Link>
+
+        <Link to={`/genre/${'thriller'}`} class="genrebox flex justify-center items-center border-slate-300 border-y-1 mx-auto w-[100%] text-lg relative">
+            <div class="p-6 hover:font-bold">Thriller</div>
+        </Link>
+        
+        
     </div>
-  );
+
+</div>
+  )
 }

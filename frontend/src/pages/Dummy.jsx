@@ -3,8 +3,9 @@ import React, { useEffect,useState } from 'react';
 import { useParams,useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import { useSnackbar } from 'notistack';
+import {loadStripe} from '@stripe/stripe-js'
 
-
+const backend="https://demo-omega-ochre.vercel.app"
 export default function Dummy() {
   const navigate=useNavigate()
   const { id } = useParams();
@@ -20,10 +21,8 @@ export default function Dummy() {
   const price=params.get("price")
  const { enqueueSnackbar } = useSnackbar();
   
-
- const backend="https://demo-omega-ochre.vercel.app"
   useEffect(()=>{
-     axios.get(`https://demo-omega-ochre.vercel.app/dummy/${id}?movieName=${movieName}?date=${date}&day=${day}&theatreName=${theatreName}&theatreLocation=${theatreLocation}&slot=${slot}&noOfSeats=${noOfSeats}&price=${price}`)
+     axios.get(`https://demo-omega-ochre.vercel.app0/dummy/${id}?movieName=${movieName}?date=${date}&day=${day}&theatreName=${theatreName}&theatreLocation=${theatreLocation}&slot=${slot}&noOfSeats=${noOfSeats}&price=${price}`)
      .then((res)=>{
         console.log(res);
      })
@@ -52,18 +51,27 @@ export default function Dummy() {
     }
   };
 
-  const handleSubmit = () => {
-    const data = { email,movieName, date, day, slot, theatreName, theatreLocation, selectedSeats, totalCost };
-  
-    axios.post('https://demo-omega-ochre.vercel.app/reservationdata', data)
-      .then(() => {
-        console.log('Data sent to backend successfully');
-         enqueueSnackbar('Tickets Booked Successfully', { variant: 'success' });
-        navigate('/');
-      })
-      .catch((error) => {
-        console.error("Error sending data to backend:", error);
-      });
+  //payment integration
+  const makePayment=async()=>{
+      const stripe = await loadStripe("pk_test_51Pe7Z2HD6FlPojIARdySEh5aHVdhKZGKT46bqNolkrUEWfkf5DwV5tyPcx5QEthDTd36awFtqSOEQE2by3OhMoHY00jkctiANk");
+    const body = { email,movieName, date, day, slot, theatreName, theatreLocation, selectedSeats, totalCost };
+    const headers={
+      'Content-Type': 'application/json'
+    }
+    const response = await fetch ("https://demo-omega-ochre.vercel.app/api/create-checkout-session",{
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body)
+    })
+    const session = await response.json();
+    const result= stripe.redirectToCheckout({
+      sessionId: session.id
+    })
+
+    if(result.error){
+      console.log(result.error)
+    }
+
   }
 
   return (
@@ -101,7 +109,7 @@ export default function Dummy() {
           </div>
           </div>
            <center>
-           <button onClick={handleSubmit} className='rounded bg-[#f09631] text-slate-300 text-2xl p-3 w-[250px] mt-6'>Book</button>
+           <button onClick={makePayment} className='rounded bg-[#f09631] text-slate-300 text-2xl p-3 w-[250px] mt-6'>Book</button>
              </center>         
           </div>
       </div>
